@@ -14,7 +14,7 @@ namespace WPF_Fody.Models
         {
             get 
             {
-                Task.Delay(1000).Wait();
+                Task.Delay(2000).Wait();
                 return _processSomeData;
             }
         }

@@ -102,10 +102,10 @@
             <Label>
                 <Label.Content>
                     <PriorityBinding>
-                        <!--<Binding
+                        <Binding
                             IsAsync="True"
                             Path="ProcessSomeData"
-                            Source="{StaticResource data1}" />-->
+                            Source="{StaticResource data1}" />
                         <Binding
                             IsAsync="True"
                             Path="MyData"
