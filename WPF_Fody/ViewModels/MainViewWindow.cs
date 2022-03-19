@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF_Fody
+namespace WPF_Fody.ViewModels
 {
     public class MainViewWindow
     {
