@@ -1,0 +1,6 @@
+C:\Users\his62\source\repos\WPF_Fody\Jed.Common\bin\Debug\Jed.Common.dll
+C:\Users\his62\source\repos\WPF_Fody\Jed.Common\bin\Debug\Jed.Common.pdb
+C:\Users\his62\source\repos\WPF_Fody\Jed.Common\obj\Debug\Jed.Common.csproj.AssemblyReference.cache
+C:\Users\his62\source\repos\WPF_Fody\Jed.Common\obj\Debug\Jed.Common.csproj.CoreCompileInputs.cache
+C:\Users\his62\source\repos\WPF_Fody\Jed.Common\obj\Debug\Jed.Common.dll
+C:\Users\his62\source\repos\WPF_Fody\Jed.Common\obj\Debug\Jed.Common.pdb

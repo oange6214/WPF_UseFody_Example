@@ -195,7 +195,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Converters\TestMultiConvert.cs" />
     <Compile Include="Models\DataModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
@@ -245,6 +244,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jed.Common\Jed.Common.csproj">
+      <Project>{c92e6e86-a061-422e-9aeb-8d6465093f86}</Project>
+      <Name>Jed.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.6.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.6.0\build\Fody.targets')" />
