@@ -21,6 +21,7 @@
 
     <Grid>
         <StackPanel>
+            <!--  使用綁定  -->
             <TextBox FontSize="20">
                 <TextBox.Text>
                     <Binding
@@ -35,6 +36,7 @@
             </TextBox>
             <TextBlock FontSize="20" Text="{Binding DelayContent, StringFormat={}{0:P0}}" />
 
+            <!--  ListBox 綁定 + Command  -->
             <ListBox ItemsSource="{Binding Source={StaticResource employeeViewModel}, Path=Employees}">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}">
@@ -46,11 +48,17 @@
                                             <TextBlock Text="{Binding Path=Id}" />
                                             <TextBlock Text="{Binding Path=Name}" />
                                             <TextBlock Text="{Binding Path=Department}" />
-                                            <Button
+                                            <!--<Button
                                                 Width="100"
                                                 Height="25"
                                                 Command="{Binding Source={StaticResource employeeViewModel}, Path=GetEmployeeCmd}"
                                                 CommandParameter="{Binding Name}"
+                                                Content="Get" />-->
+                                            <Button
+                                                Width="100"
+                                                Height="25"
+                                                Command="{Binding Source={StaticResource employeeViewModel}, Path=GetEmployeeCmd}"
+                                                CommandParameter="{Binding}"
                                                 Content="Get" />
                                         </StackPanel>
                                     </ControlTemplate>
@@ -60,6 +68,21 @@
                     </Style>
                 </ListBox.ItemContainerStyle>
             </ListBox>
+
+            <!--  Binding StringFormat  -->
+            <TextBox Text="{Binding Source={StaticResource employeeViewModel}, Path=DateTimeNow, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}" />
+            <TextBox Text="{Binding Source={StaticResource employeeViewModel}, Path=Price, StringFormat={}{0:####.##}}" />
+            <TextBox Text="{Binding Source={StaticResource employeeViewModel}, Path=Total, StringFormat={}{0:F4}}" />
+
+            <!--  Multiple Binding  -->
+            <TextBox>
+                <TextBox.Text>
+                    <MultiBinding StringFormat="姓名： {0}{1}">
+                        <Binding Path="Person.FirstName" Source="{StaticResource employeeViewModel}" />
+                        <Binding Path="Person.LastName" Source="{StaticResource employeeViewModel}" />
+                    </MultiBinding>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
 
 

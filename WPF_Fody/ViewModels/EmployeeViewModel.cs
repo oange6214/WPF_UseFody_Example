@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using WPF_Fody.Common;
@@ -13,8 +9,6 @@ namespace WPF_Fody.ViewModels
 {
     public class EmployeeViewModel
     {
-        public ICommand GetEmployeeCmd { get; set; }
-
         public EmployeeViewModel()
         {
             Employees.Add(new EmployeeModel
@@ -36,8 +30,36 @@ namespace WPF_Fody.ViewModels
                 Department = "Software"
             });
 
-            GetEmployeeCmd = new RelayCommand<string>(GetEmployeeAction);
+            //GetEmployeeCmd = new RelayCommand<string>(GetEmployeeAction);
+            GetEmployeeCmd = new RelayCommand<EmployeeModel>(GetEmployeeAction);
+
+            // Binding - string.Format Sample
+            DateTimeNow = DateTime.Now;
+            Price = 123.456;
+            Total = 28768234.9329;
+
+            Person = new PersonModel { FirstName = "Jed", LastName = "Lin" };
         }
+
+        #region Properties
+        public ICommand GetEmployeeCmd { get; set; }
+
+        public DateTime DateTimeNow { get; set; }
+        public double Price { get; set; }
+        public double Total { get; set; }
+        public PersonModel Person { get; set; }
+
+
+        private ObservableCollection<EmployeeModel> _employees;
+        public ObservableCollection<EmployeeModel> Employees
+        {
+            get { return _employees ?? (_employees = new ObservableCollection<EmployeeModel>()); }
+        }
+
+        #endregion
+
+
+        #region Action
 
         private void GetEmployeeAction(string name)
         {
@@ -47,11 +69,15 @@ namespace WPF_Fody.ViewModels
             });
         }
 
-
-        private ObservableCollection<EmployeeModel> _employees;
-        public ObservableCollection<EmployeeModel> Employees    
+        private void GetEmployeeAction(EmployeeModel model)
         {
-            get { return _employees ?? (_employees = new ObservableCollection<EmployeeModel>()); }
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                MessageBox.Show($"Id：{model.Id}, 姓名：{model.Name}, 部門：{model.Department}");
+            });
         }
+
+        #endregion
+
     }
 }

@@ -197,6 +197,7 @@
     </ApplicationDefinition>
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\PersonModel.cs" />
     <Compile Include="ValidationRules\RangeValidationRule.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\MainViewWindow.cs" />
