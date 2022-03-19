@@ -15,6 +15,10 @@
         <vm:MainViewWindow />
     </Window.DataContext>
 
+    <Window.Resources>
+        <vm:EmployeeViewModel x:Key="employeeViewModel" />
+    </Window.Resources>
+
     <Grid>
         <StackPanel>
             <TextBox FontSize="20">
@@ -30,30 +34,34 @@
                 </TextBox.Text>
             </TextBox>
             <TextBlock FontSize="20" Text="{Binding DelayContent, StringFormat={}{0:P0}}" />
+
+            <ListBox ItemsSource="{Binding Source={StaticResource employeeViewModel}, Path=Employees}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Style.Setters>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Path=Id}" />
+                                            <TextBlock Text="{Binding Path=Name}" />
+                                            <TextBlock Text="{Binding Path=Department}" />
+                                            <Button
+                                                Width="100"
+                                                Height="25"
+                                                Command="{Binding Source={StaticResource employeeViewModel}, Path=GetEmployeeCmd}"
+                                                CommandParameter="{Binding Name}"
+                                                Content="Get" />
+                                        </StackPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style.Setters>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
         </StackPanel>
 
-        <!--<ListBox ItemsSource="{Binding Employees}">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="{x:Type ListBoxItem}">
-                    <Style.Setters>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Path=Id}" />
-                                        <TextBlock Text="{Binding Path=Name}" />
-                                        <TextBlock Text="{Binding Path=Department}" />
-                                        <Button
-                                            Width="100"
-                                            Height="25"
-                                            Command="{Binding Path=DataContent.GetEmployeeCmd, RelativeSource={RelativeSource AncestorType=Window}}" />
-                                    </StackPanel>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style.Setters>
-                </Style>
-            </ListBox.ItemContainerStyle>
-        </ListBox>-->
+
     </Grid>
 </Window>

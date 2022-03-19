@@ -195,6 +195,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="ValidationRules\RangeValidationRule.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
