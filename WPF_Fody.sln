@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_From_To_By_KeyFrame", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_KeyFrame_Animation", "WPF_KeyFrame_Animation\WPF_KeyFrame_Animation.csproj", "{0CDA6FD1-D2C0-4658-8112-21D848F5D72D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Custom_Animation", "WPF_Custom_Animation\WPF_Custom_Animation.csproj", "{0166C371-0C93-437C-8E6F-87BDF2295E02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{0CDA6FD1-D2C0-4658-8112-21D848F5D72D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CDA6FD1-D2C0-4658-8112-21D848F5D72D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CDA6FD1-D2C0-4658-8112-21D848F5D72D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0166C371-0C93-437C-8E6F-87BDF2295E02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0166C371-0C93-437C-8E6F-87BDF2295E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0166C371-0C93-437C-8E6F-87BDF2295E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0166C371-0C93-437C-8E6F-87BDF2295E02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

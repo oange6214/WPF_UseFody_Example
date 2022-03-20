@@ -24,24 +24,38 @@ namespace WPF_From_To_By_KeyFrame
             DemoFromTo();       // From、To 都有;   From  作為起始值，To         作為終止值
         }
 
-        //public ObservableCollection<Rectangle> ItemCollection { get; set; } = new ObservableCollection<Rectangle>();
 
+
+
+        #region Filed
+
+        private Storyboard myStoryboard;
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// 目標物件寬度
+        /// </summary>
+        private double _targetWidth;
+        public double TargetWidth
+        {
+            get { return _targetWidth; }
+            set { _targetWidth = value; NotifyPropertyChanged(); }
+        }
+
+        /// <summary>
+        /// 舞台容器
+        /// </summary>
         private ObservableCollection<Rectangle> _itemCollection = new ObservableCollection<Rectangle>();
-
         public ObservableCollection<Rectangle> ItemCollection
         {
             get { return _itemCollection; }
             set { _itemCollection = value; NotifyPropertyChanged(); }
         }
 
-
-        private Storyboard myStoryboard;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        #endregion
 
         /*
          * 只有指定動畫的 From 值時，動畫將從屬性指定的值，前進到要進行 From 動畫處理得屬性的值或組合動畫的輸出。
@@ -244,6 +258,12 @@ namespace WPF_From_To_By_KeyFrame
             {
                 myStoryboard.Begin(this);
             };
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -12,6 +12,13 @@
 
     <Grid x:Name="GridRoot">
         <StackPanel>
+            <TextBlock Width="100" Text="寬度：" />
+            <TextBox
+                Width="100"
+                Height="30"
+                Margin="5"
+                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}, Path=ItemCollection[0].Width}" />
+
             <ItemsControl x:Name="itemsControl" ItemsSource="{Binding ItemCollection}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
