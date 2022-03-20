@@ -1,0 +1,17 @@
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\bin\Debug\WPF_Custom_Animation.exe.config
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\bin\Debug\WPF_Custom_Animation.exe
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\bin\Debug\WPF_Custom_Animation.pdb
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\WPF_Custom_Animation.csproj.AssemblyReference.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\WPF_Custom_Animation.csproj.SuggestedBindingRedirects.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\MainWindow.g.cs
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\App.g.cs
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\WPF_Custom_Animation_MarkupCompile.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\WPF_Custom_Animation_MarkupCompile.lref
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\MainWindow.baml
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\WPF_Custom_Animation.g.resources
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\WPF_Custom_Animation.Properties.Resources.resources
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\WPF_Custom_Animation.csproj.GenerateResource.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\WPF_Custom_Animation.csproj.CoreCompileInputs.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\WPF_Custom_Animation.exe
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\WPF_Custom_Animation.pdb
+C:\Users\his62\source\repos\WPF_Fody\WPF_Custom_Animation\obj\Debug\GeneratedInternalTypeHelper.g.cs

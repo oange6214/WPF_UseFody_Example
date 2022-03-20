@@ -9,7 +9,108 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid />
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <Storyboard x:Key="BounceEaseInTimeline">
+                <local:BounceDoubleAnimation
+                    Bounces="2"
+                    Bounciness="1"
+                    EdgeBehavior="EaseIn"
+                    Storyboard.TargetName="easeInButtonBounce"
+                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                    From="0"
+                    To="-100"
+                    Duration="0:0:3" />
+            </Storyboard>
+            <Storyboard x:Key="BounceEaseOutTimeline">
+                <local:BounceDoubleAnimation
+                    Bounces="2"
+                    Bounciness="1"
+                    EdgeBehavior="EaseOut"
+                    Storyboard.TargetName="easeOutButtonBounce"
+                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                    From="0"
+                    To="-100"
+                    Duration="0:0:3" />
+            </Storyboard>
+            <Storyboard x:Key="BounceEaseInOutTimeline">
+                <local:BounceDoubleAnimation
+                    Bounces="2"
+                    Bounciness="1"
+                    EdgeBehavior="EaseInOut"
+                    Storyboard.TargetName="easeInOutButtonBounce"
+                    Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                    From="0"
+                    To="-100"
+                    Duration="0:0:3" />
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="goButton">
+            <BeginStoryboard Storyboard="{StaticResource BounceEaseInTimeline}" />
+            <BeginStoryboard Storyboard="{StaticResource BounceEaseOutTimeline}" />
+            <BeginStoryboard Storyboard="{StaticResource BounceEaseInOutTimeline}" />
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+        <Canvas>
+            <Ellipse
+                x:Name="easeInButtonBounce"
+                Canvas.Left="10"
+                Canvas.Top="385"
+                Width="10"
+                Height="10"
+                Fill="Red">
+                <Ellipse.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Ellipse.RenderTransform>
+            </Ellipse>
+
+            <Ellipse
+                x:Name="easeOutButtonBounce"
+                Canvas.Left="30"
+                Canvas.Top="385"
+                Width="10"
+                Height="10"
+                Fill="Black">
+                <Ellipse.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Ellipse.RenderTransform>
+            </Ellipse>
+
+            <Ellipse
+                x:Name="easeInOutButtonBounce"
+                Canvas.Left="50"
+                Canvas.Top="385"
+                Width="10"
+                Height="10"
+                Fill="Green">
+                <Ellipse.RenderTransform>
+                    <TranslateTransform X="0" Y="0" />
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Rectangle
+                Canvas.Top="295"
+                Width="100"
+                Height="10"
+                Fill="Blue" />
+            <Rectangle
+                Canvas.Top="395"
+                Width="100"
+                Height="10"
+                Fill="Blue" />
+            <Button
+                x:Name="goButton"
+                Canvas.Top="0"
+                Canvas.Right="0"
+                Width="100"
+                Height="100"
+                Content="go" />
+        </Canvas>
+    </Grid>
 
 </Window>
