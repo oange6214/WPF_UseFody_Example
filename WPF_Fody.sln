@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_DoubleAnmation", "WPF_D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_PathAnimation", "WPF_PathAnimation\WPF_PathAnimation.csproj", "{79D9230B-80E0-441D-87F8-DB522ED2E9DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_From_To_By_KeyFrame", "WPF_From_To_By_KeyFrame\WPF_From_To_By_KeyFrame.csproj", "{44E98D23-26F0-4401-ABE6-62E32C1782E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_KeyFrame_Animation", "WPF_KeyFrame_Animation\WPF_KeyFrame_Animation.csproj", "{0CDA6FD1-D2C0-4658-8112-21D848F5D72D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{79D9230B-80E0-441D-87F8-DB522ED2E9DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79D9230B-80E0-441D-87F8-DB522ED2E9DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79D9230B-80E0-441D-87F8-DB522ED2E9DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44E98D23-26F0-4401-ABE6-62E32C1782E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44E98D23-26F0-4401-ABE6-62E32C1782E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44E98D23-26F0-4401-ABE6-62E32C1782E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44E98D23-26F0-4401-ABE6-62E32C1782E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CDA6FD1-D2C0-4658-8112-21D848F5D72D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CDA6FD1-D2C0-4658-8112-21D848F5D72D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CDA6FD1-D2C0-4658-8112-21D848F5D72D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CDA6FD1-D2C0-4658-8112-21D848F5D72D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

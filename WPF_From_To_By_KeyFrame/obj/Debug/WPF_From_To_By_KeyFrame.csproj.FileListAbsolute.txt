@@ -1,0 +1,17 @@
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\bin\Debug\WPF_From_To_By_KeyFrame.exe.config
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\bin\Debug\WPF_From_To_By_KeyFrame.exe
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\bin\Debug\WPF_From_To_By_KeyFrame.pdb
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\WPF_From_To_By_KeyFrame.csproj.AssemblyReference.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\WPF_From_To_By_KeyFrame.csproj.SuggestedBindingRedirects.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\MainWindow.g.cs
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\App.g.cs
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\WPF_From_To_By_KeyFrame_MarkupCompile.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\WPF_From_To_By_KeyFrame_MarkupCompile.lref
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\MainWindow.baml
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\WPF_From_To_By_KeyFrame.g.resources
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\WPF_From_To_By_KeyFrame.Properties.Resources.resources
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\WPF_From_To_By_KeyFrame.csproj.GenerateResource.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\WPF_From_To_By_KeyFrame.csproj.CoreCompileInputs.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\WPF_From_To_By_KeyFrame.exe
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\WPF_From_To_By_KeyFrame.pdb
+C:\Users\his62\source\repos\WPF_Fody\WPF_From_To_By_KeyFrame\obj\Debug\GeneratedInternalTypeHelper.g.cs

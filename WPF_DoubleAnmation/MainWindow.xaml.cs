@@ -36,9 +36,16 @@ namespace WPF_DoubleAnmation
 
             //AnimationClock clock = myDoubleAnimation.CreateClock();
 
-            SetStoryboard(ref myStoryboard, myAnimation, myRectangle);
+            SetStoryboard(ref myStoryboard, myAnimation);
+
+            this.RegisterName(myRectangle.Name, myRectangle);
+
+            Storyboard.SetTargetName(myStoryboard, myRectangle.Name);
+            Storyboard.SetTargetProperty(myStoryboard, new PropertyPath(Rectangle.OpacityProperty));
+
 
             GridRoot.Children.Add(myRectangle);
+
         }
 
         /// <summary>
@@ -48,12 +55,13 @@ namespace WPF_DoubleAnmation
         public Rectangle CreateRectangle()
         {
             // 建立方塊
-            Rectangle rectangle = new Rectangle();
-            rectangle.Name = "myRectangle";
-            this.RegisterName(rectangle.Name, rectangle);
-            rectangle.Width = 100;
-            rectangle.Height = 100;
-            rectangle.Fill = Brushes.Blue;
+            Rectangle rectangle = new Rectangle
+            {
+                Name = "myRectangle",
+                Width = 100,
+                Height = 100,
+                Fill = Brushes.Blue
+            };
 
             return rectangle;
         }
@@ -65,12 +73,14 @@ namespace WPF_DoubleAnmation
         private DoubleAnimation CreateAnimation()
         {
             // 設置 Animation
-            DoubleAnimation animation = new DoubleAnimation();
-            animation.From = 1.0;
-            animation.To = 0.0;
-            animation.Duration = new Duration(TimeSpan.FromSeconds(3));
-            animation.AutoReverse = true;
-            animation.RepeatBehavior = RepeatBehavior.Forever;
+            DoubleAnimation animation = new DoubleAnimation
+            {
+                From = 1.0,
+                To = 0.0,
+                Duration = new Duration(TimeSpan.FromSeconds(3)),
+                AutoReverse = true,
+                RepeatBehavior = RepeatBehavior.Forever
+            };
 
             return animation;
         }
@@ -82,12 +92,10 @@ namespace WPF_DoubleAnmation
         /// <param name="doubleAnimation">物件動畫</param>
         /// <param name="targetObj">目標物件</param>
         /// <returns></returns>
-        private void SetStoryboard<T>(ref Storyboard storyboard, DoubleAnimation doubleAnimation, T targetObject) where T : FrameworkElement
+        private void SetStoryboard(ref Storyboard storyboard, DoubleAnimation doubleAnimation)
         {
             storyboard = new Storyboard();
             storyboard.Children.Add(doubleAnimation);
-            Storyboard.SetTargetName(doubleAnimation, targetObject.Name);
-            Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath(Rectangle.OpacityProperty));
         }
 
         #endregion

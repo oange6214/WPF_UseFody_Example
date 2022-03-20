@@ -1,0 +1,54 @@
+﻿<Window
+    x:Class="WPF_From_To_By_KeyFrame.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPF_From_To_By_KeyFrame"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+
+    <Grid x:Name="GridRoot">
+        <StackPanel>
+            <ItemsControl x:Name="itemsControl" ItemsSource="{Binding ItemCollection}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+
+            <!--<Button
+                x:Name="myWidthAnimatedButton"
+                Width="200"
+                Height="30"
+                HorizontalAlignment="Left">
+                A Button
+                <Button.Triggers>
+
+            -->
+            <!--
+                Animates the width of the first button
+                from 200 to 300.
+            -->
+            <!--
+                    <EventTrigger RoutedEvent="Button.Click">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetName="myWidthAnimatedButton"
+                                    Storyboard.TargetProperty="Width"
+                                    From="200"
+                                    To="300"
+                                    Duration="0:0:3" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>-->
+        </StackPanel>
+    </Grid>
+
+</Window>
