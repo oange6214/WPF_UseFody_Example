@@ -26,6 +26,5 @@
                 Click="BtnPause_Click"
                 Content="Pause" />
         </StackPanel>
-
     </Grid>
 </Window>

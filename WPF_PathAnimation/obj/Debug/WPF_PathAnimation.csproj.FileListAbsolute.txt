@@ -1,0 +1,16 @@
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\bin\Debug\WPF_PathAnimation.exe.config
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\bin\Debug\WPF_PathAnimation.exe
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\bin\Debug\WPF_PathAnimation.pdb
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\WPF_PathAnimation.csproj.AssemblyReference.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\WPF_PathAnimation.csproj.SuggestedBindingRedirects.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\MainWindow.g.cs
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\App.g.cs
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\WPF_PathAnimation_MarkupCompile.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\WPF_PathAnimation_MarkupCompile.lref
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\MainWindow.baml
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\WPF_PathAnimation.g.resources
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\WPF_PathAnimation.Properties.Resources.resources
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\WPF_PathAnimation.csproj.GenerateResource.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\WPF_PathAnimation.csproj.CoreCompileInputs.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\WPF_PathAnimation.exe
+C:\Users\his62\source\repos\WPF_Fody\WPF_PathAnimation\obj\Debug\WPF_PathAnimation.pdb

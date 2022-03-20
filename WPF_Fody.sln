@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Command", "WPF_Command\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_DoubleAnmation", "WPF_DoubleAnmation\WPF_DoubleAnmation.csproj", "{C3FCA371-66BE-4DFC-BCCE-8BDE092F6999}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_PathAnimation", "WPF_PathAnimation\WPF_PathAnimation.csproj", "{79D9230B-80E0-441D-87F8-DB522ED2E9DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C3FCA371-66BE-4DFC-BCCE-8BDE092F6999}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3FCA371-66BE-4DFC-BCCE-8BDE092F6999}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3FCA371-66BE-4DFC-BCCE-8BDE092F6999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D9230B-80E0-441D-87F8-DB522ED2E9DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D9230B-80E0-441D-87F8-DB522ED2E9DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D9230B-80E0-441D-87F8-DB522ED2E9DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79D9230B-80E0-441D-87F8-DB522ED2E9DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
