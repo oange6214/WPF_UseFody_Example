@@ -1,0 +1,31 @@
+﻿<Window
+    x:Class="WPF_DoubleAnmation.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPF_DoubleAnmation"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid x:Name="GridRoot" />
+            <Button
+                x:Name="BtnBegin"
+                Width="100"
+                Height="30"
+                Click="BtnBegin_Click"
+                Content="Begin" />
+            <Button
+                x:Name="BtnPause"
+                Width="100"
+                Height="30"
+                Click="BtnPause_Click"
+                Content="Pause" />
+        </StackPanel>
+
+    </Grid>
+</Window>

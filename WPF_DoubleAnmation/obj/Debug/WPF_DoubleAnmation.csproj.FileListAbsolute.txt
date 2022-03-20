@@ -1,0 +1,16 @@
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\bin\Debug\WPF_DoubleAnmation.exe.config
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\bin\Debug\WPF_DoubleAnmation.exe
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\bin\Debug\WPF_DoubleAnmation.pdb
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\WPF_DoubleAnmation.csproj.AssemblyReference.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\WPF_DoubleAnmation.csproj.SuggestedBindingRedirects.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\MainWindow.g.cs
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\App.g.cs
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\WPF_DoubleAnmation_MarkupCompile.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\WPF_DoubleAnmation_MarkupCompile.lref
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\MainWindow.baml
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\WPF_DoubleAnmation.g.resources
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\WPF_DoubleAnmation.Properties.Resources.resources
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\WPF_DoubleAnmation.csproj.GenerateResource.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\WPF_DoubleAnmation.csproj.CoreCompileInputs.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\WPF_DoubleAnmation.exe
+C:\Users\his62\source\repos\WPF_Fody\WPF_DoubleAnmation\obj\Debug\WPF_DoubleAnmation.pdb
