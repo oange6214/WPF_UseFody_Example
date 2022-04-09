@@ -1,0 +1,8 @@
+C:\Users\his62\source\repos\WPF_Fody\ThreadEventNotPS\bin\Debug\ThreadEventNotPS.exe.config
+C:\Users\his62\source\repos\WPF_Fody\ThreadEventNotPS\bin\Debug\ThreadEventNotPS.exe
+C:\Users\his62\source\repos\WPF_Fody\ThreadEventNotPS\bin\Debug\ThreadEventNotPS.pdb
+C:\Users\his62\source\repos\WPF_Fody\ThreadEventNotPS\obj\Debug\ThreadEventNotPS.csproj.AssemblyReference.cache
+C:\Users\his62\source\repos\WPF_Fody\ThreadEventNotPS\obj\Debug\ThreadEventNotPS.csproj.SuggestedBindingRedirects.cache
+C:\Users\his62\source\repos\WPF_Fody\ThreadEventNotPS\obj\Debug\ThreadEventNotPS.csproj.CoreCompileInputs.cache
+C:\Users\his62\source\repos\WPF_Fody\ThreadEventNotPS\obj\Debug\ThreadEventNotPS.exe
+C:\Users\his62\source\repos\WPF_Fody\ThreadEventNotPS\obj\Debug\ThreadEventNotPS.pdb

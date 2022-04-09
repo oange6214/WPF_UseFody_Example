@@ -1,0 +1,16 @@
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\bin\Debug\WPF_Async_SampleCode.exe.config
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\bin\Debug\WPF_Async_SampleCode.exe
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\bin\Debug\WPF_Async_SampleCode.pdb
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\WPF_Async_SampleCode.csproj.AssemblyReference.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\WPF_Async_SampleCode.csproj.SuggestedBindingRedirects.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\MainWindow.g.cs
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\App.g.cs
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\WPF_Async_SampleCode_MarkupCompile.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\WPF_Async_SampleCode_MarkupCompile.lref
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\MainWindow.baml
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\WPF_Async_SampleCode.g.resources
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\WPF_Async_SampleCode.Properties.Resources.resources
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\WPF_Async_SampleCode.csproj.GenerateResource.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\WPF_Async_SampleCode.csproj.CoreCompileInputs.cache
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\WPF_Async_SampleCode.exe
+C:\Users\his62\source\repos\WPF_Fody\WPF_Async_SampleCode\obj\Debug\WPF_Async_SampleCode.pdb

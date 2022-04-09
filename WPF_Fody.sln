@@ -19,6 +19,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_KeyFrame_Animation", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Custom_Animation", "WPF_Custom_Animation\WPF_Custom_Animation.csproj", "{0166C371-0C93-437C-8E6F-87BDF2295E02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadEventSample", "ThreadEventSample\ThreadEventSample.csproj", "{239E45FB-F325-4A00-A6B6-35553F4A93CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadEventNotPS", "ThreadEventNotPS\ThreadEventNotPS.csproj", "{FC38DD6D-F054-4391-AEAA-E5F36DA151D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Async_SampleCode", "WPF_Async_SampleCode\WPF_Async_SampleCode.csproj", "{28C1CD51-F634-462E-9759-19B327B8452A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +63,18 @@ Global
 		{0166C371-0C93-437C-8E6F-87BDF2295E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0166C371-0C93-437C-8E6F-87BDF2295E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0166C371-0C93-437C-8E6F-87BDF2295E02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{239E45FB-F325-4A00-A6B6-35553F4A93CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239E45FB-F325-4A00-A6B6-35553F4A93CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239E45FB-F325-4A00-A6B6-35553F4A93CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239E45FB-F325-4A00-A6B6-35553F4A93CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC38DD6D-F054-4391-AEAA-E5F36DA151D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC38DD6D-F054-4391-AEAA-E5F36DA151D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC38DD6D-F054-4391-AEAA-E5F36DA151D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC38DD6D-F054-4391-AEAA-E5F36DA151D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C1CD51-F634-462E-9759-19B327B8452A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C1CD51-F634-462E-9759-19B327B8452A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C1CD51-F634-462E-9759-19B327B8452A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C1CD51-F634-462E-9759-19B327B8452A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
