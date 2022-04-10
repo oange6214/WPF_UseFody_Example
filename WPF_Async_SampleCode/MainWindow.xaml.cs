@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace WPF_Async_SampleCode
 {
     public partial class MainWindow : Window
     {
+
         /// <summary>
         /// 計算機概論：
         /// 處理序：程序在服務器上運行時，佔據的計算資源合集，稱之為處理緒
@@ -57,7 +61,6 @@ namespace WPF_Async_SampleCode
 
         /// *** 使用多執行緒時，不要透過延時等方式去掌控順序，不要試圖「複雜的多模式」掌控順序 ***
 
-
         /// <summary>
         /// 同步
         /// 同步單執行緒方法：按順序執行，每次調用完成後才能進入下一行，是同一個執行緒執行。
@@ -94,7 +97,6 @@ namespace WPF_Async_SampleCode
             Console.WriteLine($"********* Sync_Click 同步方法 End {Thread.CurrentThread.ManagedThreadId} *********");
             Console.WriteLine();
         }
-
 
         /// <summary>
         /// 任何的非同步多執行緒，都無法離開 Delegate---Lambda---Action/Func
@@ -133,7 +135,502 @@ namespace WPF_Async_SampleCode
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// 1、非同步的回調和狀態參數
+        /// 2、非同步等待三種方式
+        /// 3、獲取非同步的返回值
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AsyncAdvanced_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"********* Async_Click 非同步方法 Start {Thread.CurrentThread.ManagedThreadId} *********");
+
+            // 用戶點擊按鈕，希望業務操作要做，但是不要卡界面，可以使用非同步多執行緒
+
+            Action<string> action = UpdateDB;
+
+            #region 同步、非同步
+
+            //action.Invoke("AsyncAdvanced_Click 1");
+            //action.BeginInvoke("AsyncAdvanced_Click 2", null, null);
+
+            #endregion
+
+            #region 非同步回調
+
+            // 不允許沒有監控的項目上線，需要在業務操作後記錄下日誌
+
+            //action.BeginInvoke("AsyncAdvanced_Click 2", arg =>
+            //{
+            //    Console.WriteLine(arg.AsyncState);
+            //    Console.WriteLine($"AsyncAdvanced_Click 操作已經完成了... {Thread.CurrentThread.ManagedThreadId}");
+            //}, "sunday");
+
+            #endregion
+
+            #region IsCompleted 等待（IAsyncResult）
+
+            {// Ex3-1
+                //// 用戶必須確定操作完成，才能返回---上傳文件，只有成功之後才能預覽---需要等到任務計算完成後才能給用戶返回
+                ////action.BeginInvoke("文件上傳", null, null);
+                ////Console.WriteLine("完成文件預覽，綁定到界面");
+
+
+                //// 希望一方面文件上傳<完成後才預覽；另一方面，還希望有個進度提示---只有主執行緒才能操作界面
+                //IAsyncResult asyncResult = action.BeginInvoke("文件上傳", null, null);  // 啟動子執行緒完成計算
+
+                //int i = 0;
+                //while(!asyncResult.IsCompleted) // IsCompleted 是一個屬性，用來描述非同步動作是否完成；其實一開始就是 false，非同步動作完成後回去修改這個屬性為 true
+                //{
+                //    // 下面範例是模擬上傳。在真實開發中，一開始可以讀取文件的 size，然後就直接獲取已經上傳好的 size，就在做個比例就是進度。
+                //    if(i < 9)
+                //    {
+                //        ShowConsoleAndView($"當前文件上傳進度為 {++i * 10}%...");
+                //    }
+                //    else
+                //    {
+                //        ShowConsoleAndView($"當前文件上傳進度為 99.999%...");
+                //    }
+                //    Thread.Sleep(200);    // 放在這邊最少延遲 200ms
+                //}
+
+                //Console.WriteLine("完成文件上傳，執行預覽，綁定到界面");
+                //// 界面不會即時更新，因為主執行緒再忙，忙完才會更新---那要如何才能即時更新？當然就是讓主執行緒閒下來，其他操作都由子執行緒完成就行了
+            }
+
+            {// Ex3-2
+                // 更新 UI
+                //Action actionRect = UpdateRect;
+                ////actionRect.Invoke();                    // 可以更新 UI
+                //actionRect.BeginInvoke(null, null);     // 透過子執行緒不能更新 UI
+                //Console.WriteLine("UpdateRect 執行完成");
+            }
+
+            #endregion
+
+            #region 訊息量（AsyncWaitHandle.WaitOne）解決順序問題
+
+            //IAsyncResult asyncResult = action.BeginInvoke("調用接口", null, null);
+
+            //// 應用場景：當中間還有其他執行的時候... 
+            //Console.WriteLine("Do Something Else...");
+            //Console.WriteLine("Do Something Else...");
+            //Console.WriteLine("Do Something Else...");
+
+            ////asyncResult.AsyncWaitHandle.WaitOne();  // 阻塞當前執行緒，直到收到訊息量，從 asyncResult 發出，無延遲
+
+            ////asyncResult.AsyncWaitHandle.WaitOne(-1);    // 一直等待
+
+            //asyncResult.AsyncWaitHandle.WaitOne(1000);  // 等待 1000ms，超過就過去了，這個是用來做「超時」控制。在微服務架構，一個操作需要調用 5 個接口，如果某個接口很慢，會影響整個流程，可以做超時控制，超時就換接口 或者放棄 或者給個結果。
+
+            //Console.WriteLine("接口調用成功，必須是真實的成功...");
+
+            #endregion
+
+            #region EndInvoke
+
+            {
+                //// 調用接口，需要返回值
+                //int iResult1 = RemoteService();
+
+                //Func<int> func = RemoteService;
+                //int iResult2 = func.Invoke();
+
+                //IAsyncResult asyncResult = func.BeginInvoke(null, null);    // 非同步調用結果，描述非同步操作的
+                //int iResult3 = func.EndInvoke(asyncResult);
+            }
+
+            // 如果想要獲取非同步調用的真實返回值，只能使用 EndInvoke
+
+            {
+                //Func<string> func2 = () => DateTime.Now.ToString();
+                //string sResult = func2.EndInvoke(func2.BeginInvoke(null, null));
+            }
+
+            {
+                //Func<string, string> func2 = (s) => $"1 + {s}";
+                //string sResult = func2.EndInvoke(func2.BeginInvoke("Json", null, null));
+            }
+
+            {
+                //Func<int> func = RemoteService;
+
+                //IAsyncResult asyncResult = func.BeginInvoke(arg =>
+                //{
+                //    int iResult = func.EndInvoke(arg);  // EndInvoke 可以放在主執行緒，也可以放在 回調，每個非同步操作，只能調用一次 EndInvoke
+                //}, null);
+            }
+
+            #endregion
+
+
+            Console.WriteLine($"********* Async_Click 非同步方法 End {Thread.CurrentThread.ManagedThreadId} *********");
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// .NetFramework 有 N 多個版本，就有 M 多個多執行緒的使用方式
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Mutiple_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"********* Mutiple_Click 方法 Start {Thread.CurrentThread.ManagedThreadId} *********");
+
+            #region .NETFramework 1.0、1.1（如今用的少了）Thread
+
+            //ThreadStart threadStart = () =>
+            //{
+            //    Console.WriteLine($"This is Thread Start {Thread.CurrentThread.ManagedThreadId}");
+            //    Thread.Sleep(2000);
+            //    Console.WriteLine($"This is Thread End {Thread.CurrentThread.ManagedThreadId}");
+            //};
+            //Thread thread = new Thread(threadStart);
+
+            ////thread.Start();
+            ////thread.Resume();
+            ////thread.Join();
+            ////thread.Abort();
+            ////thread.IsBackground = true;
+            ////Thread.ResetAbort();
+
+            //// Thread 的 API 特別豐富，可以很彈性的控制，但是很難做好
+
+            //// Thread 有以下問題：
+            //// 因為執行緒資源是作業系統管理的，響應並不靈敏，所以不好控制。
+            //// Tread 啟動執行緒是沒有控制的，可能導致死機。
+
+            #endregion
+
+            #region .NETFramework 2.0（新的 CLR）ThreadPool（大多程式都運用此方法）
+
+            //// 池化資源管理設計思想，執行緒是一種資源，之前每次要用執行緒，就去申請一個執行緒，使用之後，釋放掉；
+            //// 池化就是做一個容器，容器提前申請 5 個執行緒，程序需要使用執行緒，直接找容器獲取，用完後在放回容器（利用控制狀態），避免頻繁的申請和銷毀；
+            //// 容器自己還會根據限制數量去申請和釋放；
+            //// 優點：
+            ////  1、執行緒重複用
+            ////  2、可以限制最大執行緒數量
+            //// 缺點：
+            ////  1、API 太少
+            ////  2、執行緒等待順序控制特別弱（MRE），影響實戰運用
+
+            //WaitCallback waitCallback = arg =>
+            //{
+            //    Console.WriteLine($"This is ThreadPool Start {Thread.CurrentThread.ManagedThreadId}");
+            //    Thread.Sleep(2000);
+            //    Console.WriteLine($"This is ThreadPool End {Thread.CurrentThread.ManagedThreadId}");
+            //};
+
+            //ThreadPool.QueueUserWorkItem(waitCallback);
+
+            #endregion
+
+            #region .NETFramework 3.0 Task 被稱之為多執行緒的最佳實踐
+
+            //// 1、Task 執行緒全部是執行緒池
+            //// 2、擁有豐富的 API
+
+            //Action action = () =>
+            //{
+            //    Console.WriteLine($"This is Task Start {Thread.CurrentThread.ManagedThreadId}");
+            //    Thread.Sleep(2000);
+            //    Console.WriteLine($"This is Task End {Thread.CurrentThread.ManagedThreadId}");
+            //};
+
+            //Task task = new Task(action);
+            //task.Start();
+
+            #endregion
+
+            #region .NETFramework 4.0 Task.Run
+
+            //Task.Run(() =>
+            //{
+            //    Console.WriteLine($"This is Task.Run Start {Thread.CurrentThread.ManagedThreadId}");
+            //    Thread.Sleep(2000);
+            //    Console.WriteLine($"This is Task.Run End {Thread.CurrentThread.ManagedThreadId}");
+            //});
+
+            #endregion
+
+            #region Parallel（大多運用在客戶端）
+
+            {
+                //// Parallel 可以啟動多執行緒，主執行緒也參與計算，節約一個執行緒
+                //// 可以透過 ParallelOptions 輕鬆控制最大併發數量
+
+                //Parallel.Invoke(() =>
+                //{
+                //    Console.WriteLine($"This is Parallel Start 1 {Thread.CurrentThread.ManagedThreadId}");
+                //    Thread.Sleep(2000);
+                //    Console.WriteLine($"This is Parallel End 1 {Thread.CurrentThread.ManagedThreadId}");
+                //}, () =>
+                //{
+                //    Console.WriteLine($"This is Parallel Start 2 {Thread.CurrentThread.ManagedThreadId}");
+                //    Thread.Sleep(2000);
+                //    Console.WriteLine($"This is Parallel End 2 {Thread.CurrentThread.ManagedThreadId}");
+                //}, () =>
+                //{
+                //    Console.WriteLine($"This is Parallel Start 3 {Thread.CurrentThread.ManagedThreadId}");
+                //    Thread.Sleep(2000);
+                //    Console.WriteLine($"This is Parallel End 3 {Thread.CurrentThread.ManagedThreadId}");
+                //}, () =>
+                //{
+                //    Console.WriteLine($"This is Parallel Start 4 {Thread.CurrentThread.ManagedThreadId}");
+                //    Thread.Sleep(2000);
+                //    Console.WriteLine($"This is Parallel End 4 {Thread.CurrentThread.ManagedThreadId}");
+                //});
+            }
+
+            #endregion
+
+
+            Console.WriteLine($"********* Mutiple_Click 方法 End {Thread.CurrentThread.ManagedThreadId} *********");
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Task 解析（多執行緒開發，大多人使用）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Task_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"********* Task_Click 方法 Start {Thread.CurrentThread.ManagedThreadId} *********");
+
+            Console.WriteLine("Jed 又接到一個案子");
+            Console.WriteLine("溝通大概需求和標準，談妥價格...");
+            Console.WriteLine("簽合約，先收取 50% 的費用");    // 一定要收，很多會搞到後面不給錢
+            Console.WriteLine("需求分析-框架搭建-模塊切分...");
+            Console.WriteLine("資料庫初步設計");
+            Console.WriteLine("高級班挑選人選，組建開發團隊");    // 團隊大加分錢
+            Console.WriteLine("開始工作");
+
+            // 除了明白情境，還要知道執行緒問題，有嚴格時間限制的，先後順序的，只能單執行緒
+            // 下面用多執行緒是為了提升效率，因為這些任務是可以獨立併發執行的
+            // 一個資料庫查詢需要 10s，能不能多執行緒優化？（不行，這是不可分割的任務
+            // 一個操作要查詢資料庫、要調用接口、要讀磁碟檔案。（可以多執行緒，因為任務彼此不干擾
+
+            List<Task> tasks = new List<Task>
+            {
+                Task.Run(() => this.Coding("李五", "Portal")),
+                Task.Run(() => this.Coding("林一", "Client")),
+                Task.Run(() => this.Coding("王三", "WeChat")),
+                Task.Run(() => this.Coding("陳二", "Service")),
+                Task.Run(() => this.Coding("香七", "SqlServer")),
+                Task.Run(() => this.Coding("粘六", "WebApi"))
+            };
+
+            #region 正常流程（會阻塞操作界面）
+
+            //Task.WaitAny(tasks.ToArray());  // 阻塞當前執行緒，直到任一任務結束---主執行緒被阻塞，所以卡界面
+            //Console.WriteLine("項目里程碑達成，收取 20% 的費用");
+
+            //// 既需要多執行緒來提升性能，又需要在多執行緒全部完成後才能執行的操作。
+            //Task.WaitAll(tasks.ToArray());  // 阻塞當前執行緒，直到全部任務結束---主執行緒被阻塞，所以卡界面
+
+
+            //Console.WriteLine("項目驗收交付後，支付剩餘的全部費用");
+
+            //Console.WriteLine($"********* Task_Click 方法 End {Thread.CurrentThread.ManagedThreadId} *********");
+            //Console.WriteLine();
+
+            #endregion
+
+            #region Task.Run 解決阻塞（不建議做法）
+
+            // 盡量不要執行緒嵌入執行緒，容易出問題。
+            // 子執行緒完成的，不能直接操作界面
+
+            //Task.Run(() =>
+            //{
+            //    Task.WaitAny(tasks.ToArray());  // 阻塞當前執行緒，直到任一任務結束---主執行緒被阻塞，所以卡界面
+            //    Console.WriteLine("項目里程碑達成，收取 20% 的費用");
+
+            //    // 既需要多執行緒來提升性能，又需要在多執行緒全部完成後才能執行的操作。
+            //    Task.WaitAll(tasks.ToArray());  // 阻塞當前執行緒，直到全部任務結束---主執行緒被阻塞，所以卡界面
+
+
+            //    Console.WriteLine("項目驗收交付後，支付剩餘的全部費用");
+
+            //    Console.WriteLine($"********* Task_Click 方法 End {Thread.CurrentThread.ManagedThreadId} *********");
+            //    Console.WriteLine();
+            //});
+
+            #endregion
+
+            #region TaskFactory 解決阻塞（建議）
+
+            //TaskFactory taskFactory = new TaskFactory();
+
+            //// 等待任一任務完成後，啟動一個新的 task 來完成後緒動作
+            //taskFactory.ContinueWhenAny(tasks.ToArray(), ca =>
+            //{
+            //    Console.WriteLine($"{ca} 第一個完成，獲取紅包獎勵 {Thread.CurrentThread.ManagedThreadId}");
+            //});
+
+            //// 等待全部任務完成後，啟動一個新的 task 來完成後緒動作
+            //taskFactory.ContinueWhenAll(tasks.ToArray(), tArray =>
+            //{
+            //    Console.WriteLine($"慶功宴，部屬聯調測試 {Thread.CurrentThread.ManagedThreadId}");
+            //});
+
+            //// *** Countinue 的後緒執行緒，可能是新執行緒，可能是剛完成任務的執行緒，還可能是同一個執行緒，不可能是主執行緒 ***
+            //// *** 執行緒是不可預測，動作先後都可能的 ***
+
+            //Task.WaitAny(tasks.ToArray());  // 阻塞當前執行緒，直到任一任務結束---主執行緒被阻塞，所以卡界面
+            //Console.WriteLine("項目里程碑達成，收取 20% 的費用");
+
+            //// 既需要多執行緒來提升性能，又需要在多執行緒全部完成後才能執行的操作。
+            //Task.WaitAll(tasks.ToArray());  // 阻塞當前執行緒，直到全部任務結束---主執行緒被阻塞，所以卡界面
+
+            //Console.WriteLine("項目驗收交付後，支付剩餘的全部費用");
+
+            //Console.WriteLine($"********* Task_Click 方法 End {Thread.CurrentThread.ManagedThreadId} *********");
+            //Console.WriteLine();
+
+            #endregion
+
+            #region TaskFactory 解決 ContinueWhenAll 沒有順序問題（ContinueWhenAny、ContinueWhenAll、WaitAny、WaitAll 可以解決 90% 多執行緒控制問題）
+
+            TaskFactory taskFactory = new TaskFactory();
+
+            // 等待任一任務完成後，啟動一個新的 task 來完成後緒動作
+            taskFactory.ContinueWhenAny(tasks.ToArray(), ca =>
+            {
+                Console.WriteLine($"{ca} 第一個完成，獲取紅包獎勵 {Thread.CurrentThread.ManagedThreadId}");
+            });
+
+            // 等待全部任務完成後，啟動一個新的 task 來完成後緒動作
+            // [解決點] task.Factory 會返回 Task 類型，把它加入 task 清單中，在後面的 WaitAll 即可卡控
+            tasks.Add(
+                taskFactory.ContinueWhenAll(tasks.ToArray(), tArray =>
+                {
+                    Console.WriteLine($"慶功宴，部屬聯調測試 {Thread.CurrentThread.ManagedThreadId}");
+                })
+            );
+
+            // *** Countinue 的後緒執行緒，可能是新執行緒，可能是剛完成任務的執行緒，還可能是同一個執行緒，不可能是主執行緒 ***
+            // *** 執行緒是不可預測，動作先後都可能的 ***
+
+            Task.WaitAny(tasks.ToArray());  // 阻塞當前執行緒，直到任一任務結束---主執行緒被阻塞，所以卡界面
+            Console.WriteLine("項目里程碑達成，收取 20% 的費用");
+
+            // 既需要多執行緒來提升性能，又需要在多執行緒全部完成後才能執行的操作。
+            Task.WaitAll(tasks.ToArray());  // 阻塞當前執行緒，直到全部任務結束---主執行緒被阻塞，所以卡界面
+
+            Console.WriteLine("項目驗收交付後，支付剩餘的全部費用");
+
+            Console.WriteLine($"********* Task_Click 方法 End {Thread.CurrentThread.ManagedThreadId} *********");
+            Console.WriteLine();
+
+            #endregion
+
+        }
+
+
+
         #region Private Methods
+
+        /// <summary>
+        /// 模擬 Coding
+        /// </summary>
+        /// <param name="text"></param>
+        private void Coding(string name, string project)
+        {
+            Console.WriteLine("********* Coding Start {0} {1} {2} {3}*********",
+                name,
+                Thread.CurrentThread.ManagedThreadId.ToString("00"),
+                DateTime.Now.ToString("HHmmss:fff"),
+                project);
+
+            long lReuslt = 0;
+            for (int i = 0; i < 1000000000; i++)
+            {
+                lReuslt += i;
+            }
+
+            Console.WriteLine("********* Coding End {0} {1} {2} {3}*********",
+                name,
+                Thread.CurrentThread.ManagedThreadId.ToString("00"),
+                DateTime.Now.ToString("HHmmss:fff"),
+                project);
+        }
+
+        /// <summary>
+        /// 模擬遠程接口
+        /// </summary>
+        /// <returns></returns>
+        private int RemoteService()
+        {
+            long lReuslt = 0;
+            for (int i = 0; i < 1000000000; i++)
+            {
+                lReuslt += i;
+            }
+            return DateTime.Now.Day;
+        }
+
+        /// <summary>
+        /// 更新 UI Label
+        /// </summary>
+        /// <param name="text"></param>
+        private void ShowConsoleAndView(string text)
+        {
+            Console.WriteLine(text);
+            lblProcessing.Content = text;
+        }
+
+        /// <summary>
+        /// 更新界面 Rect
+        /// </summary>
+        private void UpdateRect()
+        {
+            Console.WriteLine("********* UpdateRect Start {0} {1} *********",
+                Thread.CurrentThread.ManagedThreadId.ToString("00"),
+                DateTime.Now.ToString("HHmmss:fff"));
+
+            try
+            {
+                Canvas.SetLeft(rect, 50);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("子執行緒無法控制主 UI 執行緒");
+            }
+
+            Console.WriteLine("********* UpdateRect Start {0} {1} *********",
+                Thread.CurrentThread.ManagedThreadId.ToString("00"),
+                DateTime.Now.ToString("HHmmss:fff"));
+        }
+
+        /// <summary>
+        /// 模擬更新資料庫
+        /// </summary>
+        /// <param name="text"></param>
+        private void UpdateDB(string text)
+        {
+            Console.WriteLine("********* UpdateDB Start {0} {1} {2} *********",
+                text,
+                Thread.CurrentThread.ManagedThreadId.ToString("00"),
+                DateTime.Now.ToString("HHmmss:fff"));
+
+            long lReuslt = 0;
+            for (int i = 0; i < 1000000000; i++)
+            {
+                lReuslt += i;
+            }
+
+            Console.WriteLine("********* UpdateDB End {0} {1} {2} *********",
+                text,
+                Thread.CurrentThread.ManagedThreadId.ToString("00"),
+                DateTime.Now.ToString("HHmmss:fff"));
+        }
 
         /// <summary>
         /// 顯示執行時間（開始、結束）、進行整數累加，製造出 CPU bound

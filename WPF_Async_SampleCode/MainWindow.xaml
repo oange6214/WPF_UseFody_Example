@@ -10,16 +10,49 @@
     Height="200"
     mc:Ignorable="d">
 
-    <StackPanel>
-        <Button
-            x:Name="Sync"
-            Width="100"
-            Height="50"
-            Click="Sync_Click"
-            Content="同步" />
-        <Button x:Name="Async"
-            Width="100"
-            Height="50"
-            Content="非同步"  Click="Async_Click"/>
-    </StackPanel>
+
+    <Grid>
+        <WrapPanel>
+            <Canvas Width="30">
+                <Rectangle
+                    x:Name="rect"
+                    Width="20"
+                    Height="20"
+                    Fill="Red" />
+            </Canvas>
+            <StackPanel>
+                <Button
+                    x:Name="sync"
+                    Width="100"
+                    Height="30"
+                    Click="Sync_Click"
+                    Content="同步" />
+                <Button
+                    x:Name="async"
+                    Width="100"
+                    Height="30"
+                    Click="Async_Click"
+                    Content="非同步" />
+                <Button
+                    x:Name="asyncAdvanced"
+                    Width="100"
+                    Height="30"
+                    Click="AsyncAdvanced_Click"
+                    Content="非同步進階" />
+                <Button
+                    x:Name="mutiple"
+                    Width="100"
+                    Height="30"
+                    Click="Mutiple_Click"
+                    Content="對比解讀" />
+                <Button
+                    x:Name="task"
+                    Width="100"
+                    Height="30"
+                    Click="Task_Click"
+                    Content="Task" />
+                <Label x:Name="lblProcessing" Content="進度提示" />
+            </StackPanel>
+        </WrapPanel>
+    </Grid>
 </Window>
