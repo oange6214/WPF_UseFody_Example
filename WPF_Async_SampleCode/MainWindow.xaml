@@ -39,6 +39,8 @@
                     Height="30"
                     Click="AsyncAdvanced_Click"
                     Content="非同步進階" />
+            </StackPanel>
+            <StackPanel>
                 <Button
                     x:Name="mutiple"
                     Width="100"
@@ -51,8 +53,14 @@
                     Height="30"
                     Click="Task_Click"
                     Content="Task" />
-                <Label x:Name="lblProcessing" Content="進度提示" />
+                <Button
+                    x:Name="threadSafe"
+                    Width="100"
+                    Height="30"
+                    Click="ThreadSafe_Click"
+                    Content="多執行緒安全" />
             </StackPanel>
+            <Label x:Name="lblProcessing" Content="進度提示" />
         </WrapPanel>
     </Grid>
 </Window>

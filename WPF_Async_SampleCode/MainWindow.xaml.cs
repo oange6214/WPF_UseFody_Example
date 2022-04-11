@@ -27,6 +27,21 @@ namespace WPF_Async_SampleCode
         /// 
         /// CurrentThread：當前執行緒---任何操作執行都是執行緒完成，表示執行當前程序的執行緒
         /// ManagedThreadId：是 .Net 平台給 Thread 起的名字，是一個 int 整數值（盡量不重複）
+        /// 
+        /// 一、
+        /// 非同步的回調和狀態參數
+        /// 非同步等待三種方式
+        /// 獲取非同步的返回值
+        /// 
+        /// 二、
+        /// .NETFramework 多版本多執行緒對比
+        /// 多執行緒最近實踐 Task 應對多執行緒應用場景
+        /// 多執行緒進階思考
+        /// 
+        /// 三、
+        /// 局部變數和執行緒安全問題解讀
+        /// Lock 關鍵字使用全解析
+        /// 執行緒安全解決方案總覽
         /// </summary>
         public MainWindow()
         {
@@ -533,9 +548,216 @@ namespace WPF_Async_SampleCode
 
         }
 
+        /// <summary>
+        /// 執行緒安全解析
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ThreadSafe_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"********* Task_Click 方法 Start {Thread.CurrentThread.ManagedThreadId} *********");
+
+
+            #region for 建立 Task 疑問
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    int j = i;
+            //    //Thread.Sleep(20);
+            //    Task.Run(() =>
+            //    {
+            //        Console.WriteLine($"This is {i} {j} Start... {Thread.CurrentThread.ManagedThreadId}");
+            //        Thread.Sleep(2000);
+            //        Console.WriteLine($"This is {i} {j} End... {Thread.CurrentThread.ManagedThreadId}");
+            //    });
+            //}
+            #endregion
+
+            #region 什麼是執行緒安全問題？
+
+            //// 多執行緒去訪問同一個集合，有問題嗎？一般是沒有問題的
+            //// 執行緒安全問題都是出現在修改一個物件的
+
+            //List<int> lists = new List<int>();
+
+            //for (int i = 0; i < 10000; i++) // 多執行緒後，結果就變成小於 10000---就是資料丟失了
+            //{
+            //    Task.Run(() =>
+            //    {
+            //        lists.Add(i);
+            //    });
+            //}
+
+            //// 多執行緒安全問題：一段程式碼，單執行緒和多執行緒 執行的結果不一致，就表明有執行緒安全問題
+            //// List 是個陣列結構，在記憶體上是連續擺放的，假如同一時刻，去增加一個資料，都是操作同一個記憶體位置，2 個 CPU 同時發了命令，記憶體先執行一個在執行一個，就出現覆蓋了。
+
+            //Thread.Sleep(3000);
+            //Console.WriteLine(lists.Count);
+
+            #endregion
+
+            #region 解決執行緒安全問題
+
+            //List<int> lists = new List<int>();
+
+            //for (int i = 0; i < 10000; i++)
+            //{
+            //    Task.Run(() =>
+            //    {
+            //        lock (LOCK)
+            //        {
+            //            lists.Add(i);
+            //        }
+            //    });
+            //}
+
+            //// 加 lock 就能解決執行緒安全問題---本質就是「單執行緒化」---lock 就是保證方法區塊任意時刻只有一個執行緒能進去，其他執行緒就排隊。
+            //// Lock 原理---語法糖---等同 Monitor ---鎖定一個記憶體引用地址---所以不能是值類型---也不能是 null---因為 Lock 就是佔據引用，所以需要一個引用
+
+            //Thread.Sleep(3000);
+            //Console.WriteLine(lists.Count);
+
+            #endregion
+
+            #region LOCK 相關測試
+
+            #region Lock Static（可以併發）
+
+            {
+                //TestLock.Show();
+
+                //for (int i = 0; i < 5; i++)
+                //{
+                //    int j = i;
+
+                //    Task.Run(() =>
+                //    {
+                //        //lock (TestLock.TestLock_LOCK)   // 省事，共用 Lock
+                //        lock (LOCK)  // 主程序與方法是併發的
+                //        {
+                //            Console.WriteLine($"This is {i} {j} MainShow Start... {Thread.CurrentThread.ManagedThreadId}");
+                //            Thread.Sleep(2000);
+                //            Console.WriteLine($"This is {i} {j} MainShow End... {Thread.CurrentThread.ManagedThreadId}");
+                //        }
+                //    });
+                //}
+                //// 如果共用一個鎖，就會出現相互阻塞
+                //// 鎖不同，才能併發
+            }
+
+            #endregion
+
+            #region Lock Class---多實例（可以併發）
+
+            {
+                //TestLock testLock1 = new TestLock();
+                //testLock1.ShowTemp(1);
+
+                //TestLock testLock2 = new TestLock();
+                //testLock2.ShowTemp(2);
+
+                // 不同的實例裡面，都是不同的字段，所以可以併發。
+            }
+
+            #endregion
+
+            #region Lock String（不可以併發）
+
+            {
+                //TestLock testLock1 = new TestLock();
+                //testLock1.ShowString(1);
+
+                //for (int i = 0; i < 5; i++)
+                //{
+                //    int j = i;
+
+                //    Task.Run(() =>
+                //    {
+                //        lock (LOCK_String)
+                //        {
+                //            Console.WriteLine($"This is {i} {j} MainShow Start... {Thread.CurrentThread.ManagedThreadId}");
+                //            Thread.Sleep(2000);
+                //            Console.WriteLine($"This is {i} {j} MainShow End... {Thread.CurrentThread.ManagedThreadId}");
+                //        }
+                //    });
+                //}
+                //// 鎖定的是記憶體引用---字串是共享記憶體位置---堆裡面只有一個「努力向上」
+            }
+
+            #endregion
+
+            #region Lock Generic（1 和 2 不能併發、 2 和 3 可以併發）
+
+            {
+                //TestLockGeneric<int>.Show(1);
+                //TestLockGeneric<int>.Show(2);
+                //TestLockGeneric<TestLock>.Show(3);
+                //// 1 和 2 不能併發，因為是相同的變量---泛型類，在類型參數相同時，是同一個類。
+                //// 2 和 3 可以併發，因為是不同的變量---泛型類，在類型參數不同時，是不同的類。
+            }
+
+            #endregion
+
+            #region Lock This（可以併發）
+
+            {
+                //TestLock testLock1 = new TestLock();
+                //testLock1.ShowThis(1);
+
+                //TestLock testLock2 = new TestLock();
+                //testLock2.ShowThis(2);
+            }
+
+            #endregion
+
+            #region 主執行緒與實例（不可以併發）
+
+            {
+                //TestLock testLock1 = new TestLock();
+                //testLock1.ShowThis(1);
+
+                //for (int i = 0; i < 5; i++)
+                //{
+                //    int j = i;
+                //    Task.Run(() =>
+                //    {
+                //        lock (testLock1)    // 鎖 TestLock 物件
+                //        {
+                //            Console.WriteLine($"This is {i} {j} Main Start... {Thread.CurrentThread.ManagedThreadId}");
+                //            Thread.Sleep(2000);
+                //            Console.WriteLine($"This is {i} {j} Main End... {Thread.CurrentThread.ManagedThreadId}");
+                //        }
+                //    });
+                //}
+            }
+
+            #endregion
+
+            #region Lock 遞歸（不會死鎖）
+
+            {
+                new TestLock().ShowThisAnother(1);
+            }
+
+            #endregion
+
+            #endregion
+
+
+            Console.WriteLine($"********* Task_Click 方法 End {Thread.CurrentThread.ManagedThreadId} *********");
+            Console.WriteLine();
+        }
+
+        #region Field
+
+        private static readonly object LOCK = new object();
+        private static readonly string LOCK_String = "努力向上";
+
+        #endregion
 
 
         #region Private Methods
+        // 解決執行緒安全問題（標準做法）
 
         /// <summary>
         /// 模擬 Coding

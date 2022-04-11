@@ -1,0 +1,11 @@
+C:\Users\his62\source\repos\WPF_Fody\Console.AwaitAsync\bin\Debug\Console.AwaitAsync.exe.config
+C:\Users\his62\source\repos\WPF_Fody\Console.AwaitAsync\bin\Debug\Console.AwaitAsync.exe
+C:\Users\his62\source\repos\WPF_Fody\Console.AwaitAsync\bin\Debug\Console.AwaitAsync.pdb
+C:\Users\his62\source\repos\WPF_Fody\Console.AwaitAsync\bin\Debug\Jed.Common.dll
+C:\Users\his62\source\repos\WPF_Fody\Console.AwaitAsync\bin\Debug\Jed.Common.pdb
+C:\Users\his62\source\repos\WPF_Fody\Console.AwaitAsync\obj\Debug\Console_AwaitAsync.csproj.AssemblyReference.cache
+C:\Users\his62\source\repos\WPF_Fody\Console.AwaitAsync\obj\Debug\Console_AwaitAsync.csproj.SuggestedBindingRedirects.cache
+C:\Users\his62\source\repos\WPF_Fody\Console.AwaitAsync\obj\Debug\Console_AwaitAsync.csproj.CoreCompileInputs.cache
+C:\Users\his62\source\repos\WPF_Fody\Console.AwaitAsync\obj\Debug\Console_AwaitAsync.csproj.CopyComplete
+C:\Users\his62\source\repos\WPF_Fody\Console.AwaitAsync\obj\Debug\Console.AwaitAsync.exe
+C:\Users\his62\source\repos\WPF_Fody\Console.AwaitAsync\obj\Debug\Console.AwaitAsync.pdb
